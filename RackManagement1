@@ -1,0 +1,45 @@
+#Rackmanagement 1 Challenge from r/dailyprogrammer (https://www.reddit.com/r/dailyprogrammer/comments/5go843/20161205_challenge_294_easy_rack_management_1/)
+#Probbaly took me longer than it should, definitely still a newb, probably should just be returning True or False instead of appending successes/failurs to a list then checking
+#Any advice and critiques are welcome!
+
+def scrabble(tiles, word):
+    tileList = list(tiles)
+    wordList = list(word)
+    match = []
+
+    for i in wordList:
+        len1 = tileList.count(i)
+        len2 = wordList.count(i)
+
+        if len1 < len2: 
+            try:
+                tileList.remove(i)
+                match.append("true")
+            
+            except ValueError:   
+                try:        
+                    tileList.remove("?")
+                    match.append("true")
+               
+               except ValueError:
+                    match.append("false")
+        elif len1 >= len2:
+            match.append("true") 
+            
+    if "false" in match:
+        print "false"
+
+    else:
+        print "true"
+
+
+
+scrabble("ladilmy", "daily")
+scrabble("eerriin", "eerie")
+scrabble("orrpgma", "program")
+scrabble("orppgma", "program")
+
+scrabble("pizza??", "pizzazz") 
+scrabble("piizza?", "pizzazz")
+scrabble("a??????", "program")
+scrabble("b??????", "program")
